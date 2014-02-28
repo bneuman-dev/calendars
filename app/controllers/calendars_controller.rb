@@ -1,5 +1,13 @@
 class CalendarsController < ApplicationController
   def index
+    # @free = "boo"
+     @free =
+    [{"start" => Time.now,
+      "end" => Time.now + 1.hour
+      },
+     {"start" => Time.now + 3.hour,
+      "end" => Time.now + 4.hour}
+    ].to_json
   end
 
   def create
@@ -11,10 +19,7 @@ class CalendarsController < ApplicationController
     render text: desirable.to_json
   end
 
-  def view
-    free =
-    [{"start" => Time.now,
-      "end" => Time.now + 1.hour,
+  def show
 
-      }]
+  end
 end
