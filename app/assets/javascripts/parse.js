@@ -21,7 +21,7 @@ function parse() {
     events : [
         {'id':1, 'start': new Date(year, month, day, 12), 'end': new Date(year, month, day, 13, 00), 'title': 'Lunch with Sarah'}
       ],
-    
+
     freebusys: events_input
   };
 
