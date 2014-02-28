@@ -1,29 +1,9 @@
-  (function($) {
-    var d = new Date();
-    var year = d.getFullYear();
-    var month = d.getMonth();
-    var day = d.getDate();
-    var eventData2 = {
-      options: {
-        timeslotsPerHour: 3,
-        timeslotHeight: 30,
-        defaultFreeBusy: {free: false}
-      },
 
-
-
-     events : [
-        {'id':1, 'start': new Date(year, month, day, 12), 'end': new Date(year, month, day, 13, 00), 'title': 'Lunch with Sarah'}
-      ],
-      freebusys: [
-      {'start': new Date(year, month, day, 8), 'end': new Date(year, month, day+0, 14), 'free': true}
-      ]
-    };
-
-    $(document).ready(function() {
+    function make_calendar(events_input) {
       var $calendar = $('#calendar').weekCalendar({
         timeslotsPerHour: 4,
         scrollToHourMillis : 0,
+        
         height: function($calendar){
           return $(window).height() - $('h1').outerHeight(true);
         },
@@ -39,7 +19,6 @@
         },
 
         eventNew : function(calEvent, $event, FreeBusyManager, calendar) {
-          console.log(calEvent);
           var isFree = true;
           $.each(FreeBusyManager.getFreeBusys(calEvent.start, calEvent.end), function() {
             if (
@@ -71,7 +50,7 @@
         },
 
         data: function(start, end, callback) {
-          callback(eventData2);
+          callback(events_input);
         },
 
         displayOddEven: true,
@@ -82,5 +61,5 @@
         useShortDayNames: true,
         dateFormat: 'd F y'
       });
-    });
-  })(jQuery);
+    
+    }
